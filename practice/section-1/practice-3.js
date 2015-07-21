@@ -19,6 +19,6 @@ function collect_same_elements(collection_a, object_b) {
 var result = collect_same_elements(collection_a,collection_b);*/
 function collect_same_elements(collection_a,object_b) {
   return collection_a.filter(function(item){
-    return object_b.indexof(item) != -1;
+    return object_b.value.indexOf(item) != -1;
   });
 }

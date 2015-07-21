@@ -49,9 +49,11 @@ function count_same_elements(collection) {
 function formatItem(item) {
   if (item.length === 1) {
     return { char: item, count: 1 };
-  } else if (item[1] === '[') {
-    return { char: item[0], count: parseInt(item.substring(2, item.length - 1)) };
-  } else {
-    return { char: item[0], count: parseInt(item.substring(2)) };
+  }
+  // } else if (item[1] === '[') {
+  //   return { char: item[0], count: parseInt(item.substring(2, item.length - 1)) };
+  // }
+  else {
+    return { char: item[0], count: parseInt(item.slice(2)) };
   }
 }
