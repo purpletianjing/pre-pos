@@ -1,4 +1,4 @@
-function sameEle(ele,object_b)  {
+/*function sameEle(ele,object_b)  {
   for (var i = 0; i < object_b.value.length; i++) {
     if(ele === object_b.value[i])  {
       return ele;
@@ -16,4 +16,9 @@ function collect_same_elements(collection_a, object_b) {
   }
   return result;
 }
-var result = collect_same_elements(collection_a,collection_b);
+var result = collect_same_elements(collection_a,collection_b);*/
+function collect_same_elements(collection_a,object_b) {
+  return collection_a.filter(function(item){
+    return object_b.indexof(item) != -1;
+  });
+}

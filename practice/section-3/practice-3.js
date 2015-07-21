@@ -1,4 +1,4 @@
-function comEle(ele,collection_c) {
+/*function comEle(ele,collection_c) {
   for (var i = 0; i < collection_c.length; i++) {
     if(ele === collection_c[i].key) {
       collection_c[i].count++;
@@ -25,5 +25,48 @@ function create_updated_collection(collection_a, object_b) {
     sameEle(collection_c[k],object_b);
   }
   return collection_c;
+}*/
+
+// function countSameElements(result,collection_a) {
+//   collection_a.map(function(val){
+//     result.map(function(item){
+//       item.key = val ? item.count+1 : 1;
+//     });
+//     //objResult[val] = objResult[val] ? objResult[val]+1 : 1;
+//   });
+//   return result;
+// }
+
+// function computeCount(result,object_b) {
+//   result.forEach(function(val){
+//       for (var i = 0; i < object_b.value.length; i++) {
+//         if (val.key === object_b.value[i]) {
+//           val.count -= parseInt(val.count / 3);
+//           break;
+//         }
+//       }
+//   });
+//   return result;
+// }
+function countSameElements(result,collection_a) {
+  var objResult = {};
+  collection_a.map(function(val){
+    //objResult[val] = objResult[val] ? objResult[val]+1 : 1;
+    objResult[val] = (objResult[val] +1) || 1;
+  });
+  for (var i in objResult) {
+    result.push({key:i,count:objResult[i]});
+  }
+  return result;
 }
-create_updated_collection(collection_a,object_b);
+
+function create_updated_collection(collection_a,object_b) {
+  var result = [];
+  countSameElements(result,collection_a);
+  for (var i = 0; i < result.length; i++) {
+    if (object_b.value.indexOf(result[i].key) != -1) {
+      result[i].count -= Math.floor(result[i].count / 3);
+    }
+  }
+  return result;
+}
