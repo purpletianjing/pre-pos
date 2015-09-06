@@ -1,24 +1,3 @@
-// function findEle(ele,result) {
-//   for (var i = 0; i < result.length; i++) {
-//     if(ele === result[i].key) {
-//       result[i].count++;
-//       return;
-//     }
-//   }
-//   if(ele.length > 1) {
-//     result.push({key:ele[0],count:parseInt(ele[2])});
-//     return;
-//   }
-//   result.push({key:ele,count:1});
-// }
-// function count_same_elements(collection) {
-//   var result = [];
-//   for (var i = 0; i < collection.length;i++) {
-//     findEle(collection[i],result);
-//   }
-//   return result;
-// }
-//}
 function count_same_elements(collection) {
   var result = [];
   var counts = {};
