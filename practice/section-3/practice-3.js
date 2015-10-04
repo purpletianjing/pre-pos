@@ -8,17 +8,19 @@ function countSameElements(result,collection_a) {
   for (var i in objResult) {
     result.push({key:i,count:objResult[i]});
   }
-  
+
   return result;
 }
 
 function create_updated_collection(collection_a,object_b) {
   var result = [];
+
   countSameElements(result,collection_a);
-  for (var i = 0; i < result.length; i++) {
-    if (object_b.value.indexOf(result[i].key) != -1) {
-      result[i].count -= Math.floor(result[i].count / 3);
+
+  result.forEach(function(val) {
+    if (object_b.value.indexOf(val.key) != -1) {
+      val.count -= Math.floor(val.count / 3);
     }
-  }
+    })
   return result;
 }
