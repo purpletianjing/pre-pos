@@ -17,6 +17,5 @@ function formatItem(item) {
   if (item.length === 1) {
     return {key: item, count: 1};
   }
-  //return { key: item[0], count: parseInt(item.substring(2,3)) };
   return {key: item[0], count: parseInt(item.substr(2, 1))};
 }
