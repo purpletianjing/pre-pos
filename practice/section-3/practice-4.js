@@ -1,32 +1,23 @@
-function countSameElements(collection_a) {
+function create_updated_collection(collection_a, object_b) {
+  var changeFormResult = change_collection_form(collection_a);
+  changeFormResult.forEach(function (val) {
+    if (object_b.value.indexOf(val.key) != -1) {
+      val.count -= parseInt(val.count / 3);
+    }
+  });
+  return changeFormResult;
+}
+
+function change_collection_form(collection_a) {
   var objResult = {};
   var result = [];
-  collection_a.map(function(val){
-    return {key:val.split("-")[0],count:parseInt(val.split("-")[1] || 1)};
-  }).forEach(function(obj){
-    objResult[obj.key] = objResult[obj.key] || 0;
-    objResult[obj.key] += obj.count;
+  collection_a.forEach(function (character) {
+    var key = character.split("-")[0];
+    var count = parseInt(character.split("-")[1]) || 1;
+    objResult[key] = (objResult[key] + count) || count;
   });
-  for (var i in objResult) {
-    result.push({key:i,count:objResult[i]});
+  for (var attribute in objResult) {
+    result.push({key: attribute, count: objResult[attribute]});
   }
-  return result;
-}
-
-function computeCount(result,object_b) {
-  result.forEach(function(val){
-      for (var i = 0; i < object_b.value.length; i++) {
-        if (val.key === object_b.value[i]) {
-          val.count -= parseInt(val.count / 3);
-          break;
-        }
-      }
-  });
-  return result;
-}
-
-function create_updated_collection(collection_a,object_b) {
-  var result = countSameElements(collection_a);
-  result = computeCount(result,object_b);
   return result;
 }
